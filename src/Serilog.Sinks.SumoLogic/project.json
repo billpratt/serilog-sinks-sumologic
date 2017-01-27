@@ -1,16 +1,35 @@
 {
-  "version": "1.0.0-*",
+  "version": "2.0.0-*",
+  "description": "Serilog sink for Sumo Logic",
+  "authors": [
+    "Bill Pratt"
+  ],
+  "packOptions": {
+    "tags": [ "serilog", "logging", "sumo", "logic", "sumologic" ],
+    "projectUrl": "http://serilog.net",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
+    "iconUrl": "http://serilog.net/images/serilog-sink-nuget.png"
+  },
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
     "Serilog": "2.0.0",
-    "Serilog.Sinks.PeriodicBatching": "2.0.0",
-    "System.Net.Http": "4.1.0"
+    "Serilog.Sinks.PeriodicBatching": "2.0.0"
   },
 
   "frameworks": {
-    "netstandard1.6": {
-      "imports": "dnxcore50"
+    "net4.5": {
+      "buildOptions": {
+        "define": [ "NET4" ]
+      },
+      "frameworkAssemblies": {
+        "System.Net.Http": ""
+      }
+    },
+    "netstandard1.5": {
+      "dependencies": {
+        "System.Net.Http": "4.1.0"
+      }
     }
   }
 }

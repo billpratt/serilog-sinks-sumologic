@@ -9,7 +9,7 @@
       "type": "platform",
       "version": "1.0.1"
     },
-    "Serilog.Sinks.SumoLogic": "1.0.0-*",
+    "Serilog.Sinks.SumoLogic": "2.0.0-*",
     "Serilog": "2.1.0",
     "Serilog.Sinks.Console": "2.0.0",
     "Serilog.Sinks.Async": "1.0.1" 

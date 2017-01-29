@@ -1,2 +1,18 @@
-# serilog-sinks-sumologic
-A Serilog event sink that writes to Sumo Logic
+# Serilog.Sinks.SumoLogic
+
+A Serilog sink that writes events to [Sumo Logic](http://www.sumologic.com).
+
+**Package** - [Serilog.Sinks.SumoLogic](http://nuget.org/packages/serilog.sinks.sumologic)
+| **Platforms** - .NET 4.5, .NETStandard 1.5
+
+```csharp
+// basic usage writes to Sumo Logic with the default source name 'Serilog'
+var log = new LoggerConfiguration()
+    .WriteTo.SumoLogic("[YOUR SUMO COLLECTOR URL]")
+    .CreateLogger();
+
+// override default Sumo Logic source name
+var log = new LoggerConfiguration()
+    .WriteTo.SumoLogic("[YOUR SUMO COLLECTOR URL]", "FancyPantsSourceName")
+    .CreateLogger();
+```

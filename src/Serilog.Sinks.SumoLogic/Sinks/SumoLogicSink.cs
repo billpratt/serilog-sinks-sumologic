@@ -21,6 +21,8 @@ namespace Serilog.Sinks.SumoLogic.Sinks
         private readonly ITextFormatter _textFormatter;
         private readonly HttpClient _httpClient;
 
+        private const string SumoNameRequestHeader = "X-Sumo-Name";
+
         /// <summary>
         /// The default maximum number of events to include in a single batch.
         /// </summary>
@@ -87,7 +89,7 @@ namespace Serilog.Sinks.SumoLogic.Sinks
         {
             var formattedLog = GetFormattedLog(logEvent);
             var content = new StringContent(formattedLog, Encoding.UTF8, "text/plain");
-            content.Headers.Add("X-Sumo-Name", _sourceName);
+            content.Headers.Add(SumoNameRequestHeader, _sourceName);
 
             return content;
         }

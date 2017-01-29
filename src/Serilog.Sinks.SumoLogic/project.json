@@ -1,9 +1,7 @@
 {
   "version": "2.0.0-*",
   "description": "Serilog sink for Sumo Logic",
-  "authors": [
-    "Bill Pratt"
-  ],
+  "authors": [ "Bill Pratt" ],
   "packOptions": {
     "tags": [ "serilog", "logging", "sumo", "logic", "sumologic" ],
     "projectUrl": "http://serilog.net",
@@ -12,22 +10,19 @@
   },
 
   "dependencies": {
-    "NETStandard.Library": "1.6.0",
     "Serilog": "2.0.0",
     "Serilog.Sinks.PeriodicBatching": "2.0.0"
   },
 
   "frameworks": {
     "net4.5": {
-      "buildOptions": {
-        "define": [ "NET4" ]
-      },
       "frameworkAssemblies": {
         "System.Net.Http": ""
       }
     },
     "netstandard1.5": {
       "dependencies": {
+        "NETStandard.Library": "1.6.0",
         "System.Net.Http": "4.1.0"
       }
     }

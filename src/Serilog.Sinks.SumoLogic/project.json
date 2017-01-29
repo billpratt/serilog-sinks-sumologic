@@ -4,7 +4,7 @@
   "authors": [ "Bill Pratt" ],
   "packOptions": {
     "tags": [ "serilog", "logging", "sumo", "logic", "sumologic" ],
-    "projectUrl": "http://serilog.net",
+    "projectUrl": "https://github.com/billpratt/serilog-sinks-sumologic",
     "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0",
     "iconUrl": "http://serilog.net/images/serilog-sink-nuget.png"
   },

@@ -32,7 +32,12 @@ namespace Serilog.Sinks.SumoLogic.Sinks
         /// Sumo Logic default source name
         /// </summary>
         public const string DefaultSourceName = "Serilog";
-        
+
+        /// <summary>
+        /// The default output template
+        /// </summary>
+        public const string DefaultOutputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}";
+
         /// <summary>
         /// The default period.
         /// </summary>

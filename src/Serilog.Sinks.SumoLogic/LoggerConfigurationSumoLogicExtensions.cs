@@ -11,8 +11,6 @@ namespace Serilog.Sinks.SumoLogic
     /// </summary>
     public static class LoggerConfigurationSumoLogicExtensions
     {
-        private const string DefaultConsoleOutputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}";
-
         /// <summary>
         /// Adds the WriteTo.SumoLogic() extension method to <see cref="LoggerConfiguration"/>.
         /// </summary>
@@ -33,7 +31,7 @@ namespace Serilog.Sinks.SumoLogic
             LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum,
             int batchSizeLimit = SumoLogicSink.DefaultBatchSizeLimit,
             TimeSpan? period = null,
-            string outputTemplate = DefaultConsoleOutputTemplate,
+            string outputTemplate = SumoLogicSink.DefaultOutputTemplate,
             IFormatProvider formatProvider = null)
         {
             if (loggerConfiguration == null)

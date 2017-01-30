@@ -3,7 +3,7 @@
 A [Serilog](https://github.com/serilog/serilog) sink that writes events to [Sumo Logic](http://www.sumologic.com).
 
 **Package** - [Serilog.Sinks.SumoLogic](http://nuget.org/packages/serilog.sinks.sumologic)
-| **Platforms** - .NET 4.5, .NETStandard 1.5
+| **Platforms** - .NET 4.5, .NET Core, .NETStandard 1.5
 
 
 ### Usage

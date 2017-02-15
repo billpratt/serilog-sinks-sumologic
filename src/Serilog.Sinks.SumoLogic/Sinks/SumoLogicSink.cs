@@ -105,7 +105,7 @@ namespace Serilog.Sinks.SumoLogic.Sinks
             var formattedLog = GetFormattedLog(logEvent);
             var content = new StringContent(formattedLog, Encoding.UTF8, "text/plain");
             content.Headers.Add(SumoNameRequestHeader, _sourceName);
-            if (_sourceCategory != DefaultSourceCategory)
+            if (!string.IsNullOrWhiteSpace(_sourceCategory))
                 content.Headers.Add(SumoCategoryRequestHeader, _sourceCategory);
 
             return content;

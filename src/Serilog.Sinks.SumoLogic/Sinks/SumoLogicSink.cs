@@ -18,10 +18,12 @@ namespace Serilog.Sinks.SumoLogic.Sinks
     {
         private readonly string _endpointUrl;
         private readonly string _sourceName;
+        private readonly string _sourceHost;
         private readonly ITextFormatter _textFormatter;
         private readonly HttpClient _httpClient;
 
-        private const string SumoNameRequestHeader = "X-Sumo-Name";
+        private const string SumoSourceNameRequestHeader = "X-Sumo-Name";
+        private const string SumoSourceHostRequestHeader = "X-Sumo-Host";
 
         /// <summary>
         /// The default maximum number of events to include in a single batch.
@@ -32,6 +34,11 @@ namespace Serilog.Sinks.SumoLogic.Sinks
         /// Sumo Logic default source name
         /// </summary>
         public const string DefaultSourceName = "Serilog";
+
+        /// <summary>
+        /// Sumo Logic default source host
+        /// </summary>
+        public const string DefaultSourceHost = "";
 
         /// <summary>
         /// The default output template
@@ -48,18 +55,21 @@ namespace Serilog.Sinks.SumoLogic.Sinks
         /// </summary>
         /// <param name="endpointUrl">Sumo Logic endpoint URL to send logs to</param>
         /// <param name="sourceName">Sumo Logic source name</param>
+        /// <param name="sourceHost">Sumo Logic source host</param>
         /// <param name="textFormatter">Supplies how logs should be formatted</param>
         /// <param name="batchSizeLimit">The maximum number of events to post in a single batch.</param>
         /// <param name="period">The time to wait between checking for event batches.</param>
         public SumoLogicSink(
             string endpointUrl,
             string sourceName,
+            string sourceHost,
             ITextFormatter textFormatter,
             int batchSizeLimit, 
             TimeSpan period) : base(batchSizeLimit, period)
         {
             _endpointUrl = endpointUrl;
             _sourceName = sourceName;
+            _sourceHost = sourceHost;
             _textFormatter = textFormatter;
 
             _httpClient = new HttpClient();
@@ -94,7 +104,10 @@ namespace Serilog.Sinks.SumoLogic.Sinks
         {
             var formattedLog = GetFormattedLog(logEvent);
             var content = new StringContent(formattedLog, Encoding.UTF8, "text/plain");
-            content.Headers.Add(SumoNameRequestHeader, _sourceName);
+            content.Headers.Add(SumoSourceNameRequestHeader, _sourceName);
+            
+            if(!string.IsNullOrWhiteSpace(_sourceHost))
+                content.Headers.Add(SumoSourceHostRequestHeader, _sourceHost);
 
             return content;
         }

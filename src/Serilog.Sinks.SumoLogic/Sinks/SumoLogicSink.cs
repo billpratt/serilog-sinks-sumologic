@@ -43,7 +43,7 @@ namespace Serilog.Sinks.SumoLogic.Sinks
         /// <summary>
         /// The default output template
         /// </summary>
-        public const string DefaultOutputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level}] {Message}{NewLine}{Exception}";
+        public const string DefaultOutputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] {Message}{NewLine}{Exception}";
 
         /// <summary>
         /// The default period.

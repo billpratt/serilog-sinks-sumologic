@@ -1,21 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BAA9AEEF-5E86-4038-AA53-DB2B5E7F0EC8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{946E105D-0A8F-4CFB-8A00-82682B11BAE1}"
 	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Serilog.Sinks.SumoLogic", "src\Serilog.Sinks.SumoLogic\Serilog.Sinks.SumoLogic.xproj", "{D875BBC2-4329-4BA9-93F7-D6BC34928CD4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{46CAC655-B08E-4D45-B3E0-BA1C3145833A}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Serilog.Sinks.SumoLogic.Sample", "examples\Serilog.Sinks.SumoLogic.Sample\Serilog.Sinks.SumoLogic.Sample.xproj", "{9CF1B6FB-5400-41A5-ADCE-029640672C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Sinks.SumoLogic", "src\Serilog.Sinks.SumoLogic\Serilog.Sinks.SumoLogic.csproj", "{D875BBC2-4329-4BA9-93F7-D6BC34928CD4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Sinks.SumoLogic.Sample", "examples\Serilog.Sinks.SumoLogic.Sample\Serilog.Sinks.SumoLogic.Sample.csproj", "{9CF1B6FB-5400-41A5-ADCE-029640672C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

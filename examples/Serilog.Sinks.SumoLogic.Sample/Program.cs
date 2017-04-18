@@ -1,4 +1,5 @@
 ﻿using System;
+using Serilog.Formatting.Raw;
 
 namespace Serilog.Sinks.SumoLogic.Sample
 {
@@ -11,6 +12,7 @@ namespace Serilog.Sinks.SumoLogic.Sample
             var log = new LoggerConfiguration()
                 .WriteTo.Console()
                 .WriteTo.Async(configuration => configuration.SumoLogic(url))   // use in console apps
+                .WriteTo.Async(configuration => configuration.SumoLogic(new RawFormatter(), url))
                 //.WriteTo.SumoLogic(url)       // use in ASP.NET
                 .CreateLogger();
 

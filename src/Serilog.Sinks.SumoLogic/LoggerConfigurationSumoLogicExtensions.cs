@@ -1,7 +1,7 @@
 ﻿using System;
 using Serilog.Configuration;
 using Serilog.Events;
-using Serilog.Formatting.Display;
+using Serilog.Formatting;
 using Serilog.Sinks.SumoLogic.Sinks;
 
 namespace Serilog.Sinks.SumoLogic
@@ -21,9 +21,7 @@ namespace Serilog.Sinks.SumoLogic
         /// <param name="restrictedToMinimumLevel">The minimum log event level required in order to write an event to the sink.</param>
         /// <param name="batchSizeLimit">The maximum number of events to post in a single batch.</param>
         /// <param name="period">The time to wait between checking for event batches.</param>
-        /// <param name="outputTemplate">A message template describing the format used to write to the sink.
-        /// the default is "{Timestamp} [{Level}] {Message}{NewLine}{Exception}".</param>
-        /// <param name="formatProvider">Supplies culture-specific formatting information, or null.</param>
+        /// <param name="textFormatter">Supplies how logs should be formatted, or null to use the default</param>
         /// <returns></returns>
         public static LoggerConfiguration SumoLogic(
             this LoggerSinkConfiguration loggerConfiguration,
@@ -33,25 +31,24 @@ namespace Serilog.Sinks.SumoLogic
             LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum,
             int batchSizeLimit = SumoLogicSink.DefaultBatchSizeLimit,
             TimeSpan? period = null,
-            string outputTemplate = SumoLogicSink.DefaultOutputTemplate,
-            IFormatProvider formatProvider = null)
+            ITextFormatter textFormatter = null)
         {
-            if (loggerConfiguration == null)
+            if(loggerConfiguration == null)
                 throw new ArgumentNullException(nameof(loggerConfiguration));
 
-            if (string.IsNullOrEmpty(endpointUrl))
+            if(string.IsNullOrWhiteSpace(endpointUrl))
                 throw new ArgumentNullException(nameof(endpointUrl));
-
-            var defaultPeriod = period ?? SumoLogicSink.DefaultPeriod;
-            var formatter = new MessageTemplateTextFormatter(outputTemplate, formatProvider);
+            
+            period = period ?? SumoLogicSink.DefaultPeriod;
+            textFormatter = textFormatter ?? SumoLogicSink.DefaultTextFormatter;
 
             var sink = new SumoLogicSink(
                 endpointUrl,
                 sourceName,
                 sourceCategory,
-                formatter,
+                textFormatter,
                 batchSizeLimit,
-                defaultPeriod);
+                period.Value);
 
             return loggerConfiguration.Sink(sink, restrictedToMinimumLevel);
         }

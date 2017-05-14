@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Serilog.Events;
 using Serilog.Formatting;
+using Serilog.Formatting.Display;
 using Serilog.Sinks.PeriodicBatching;
 
 namespace Serilog.Sinks.SumoLogic.Sinks
@@ -49,6 +50,11 @@ namespace Serilog.Sinks.SumoLogic.Sinks
         /// The default period.
         /// </summary>
         public static readonly TimeSpan DefaultPeriod = TimeSpan.FromSeconds(2);
+
+        /// <summary>
+        /// The default <see cref="ITextFormatter"/>
+        /// </summary>
+        public static readonly ITextFormatter DefaultTextFormatter = new MessageTemplateTextFormatter(DefaultOutputTemplate, null);
 
         /// <summary>
         /// Sink for sending logs to Sumo Logic

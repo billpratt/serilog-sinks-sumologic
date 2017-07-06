@@ -37,7 +37,7 @@ public class Startup
   public Startup(IHostingEnvironment env)
   {
     Log.Logger = new LoggerConfiguration()
-      .WriteTo.SumoLogic()
+      .WriteTo.SumoLogic("http://localhost")  //replace with your SumoLogic endpoint
       .CreateLogger();
       
     // Other startup code

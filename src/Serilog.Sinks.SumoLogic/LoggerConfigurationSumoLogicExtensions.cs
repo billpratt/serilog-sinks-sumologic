@@ -2,6 +2,7 @@
 using Serilog.Configuration;
 using Serilog.Events;
 using Serilog.Formatting;
+using Serilog.Formatting.Display;
 using Serilog.Sinks.SumoLogic.Sinks;
 
 namespace Serilog.Sinks.SumoLogic
@@ -22,6 +23,7 @@ namespace Serilog.Sinks.SumoLogic
         /// <param name="batchSizeLimit">The maximum number of events to post in a single batch.</param>
         /// <param name="period">The time to wait between checking for event batches.</param>
         /// <param name="textFormatter">Supplies how logs should be formatted, or null to use the default</param>
+        /// <param name="outputTemplate">Override default output template. Should not be used if overriding <see cref="ITextFormatter"/></param>
         /// <returns></returns>
         public static LoggerConfiguration SumoLogic(
             this LoggerSinkConfiguration loggerConfiguration,
@@ -31,7 +33,8 @@ namespace Serilog.Sinks.SumoLogic
             LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum,
             int batchSizeLimit = SumoLogicSink.DefaultBatchSizeLimit,
             TimeSpan? period = null,
-            ITextFormatter textFormatter = null)
+            ITextFormatter textFormatter = null,
+            string outputTemplate = null)
         {
             if(loggerConfiguration == null)
                 throw new ArgumentNullException(nameof(loggerConfiguration));
@@ -40,7 +43,20 @@ namespace Serilog.Sinks.SumoLogic
                 throw new ArgumentNullException(nameof(endpointUrl));
             
             period = period ?? SumoLogicSink.DefaultPeriod;
-            textFormatter = textFormatter ?? SumoLogicSink.DefaultTextFormatter;
+            
+            /* Order:
+             * 1. Use textFormatter if set
+             * 2. Use outputTemplate if set and textFormatter not set
+             * 3. If neither set, use default message formatter
+             */
+            if (textFormatter == null)
+            {
+                var templateToUse = !string.IsNullOrWhiteSpace(outputTemplate)
+                    ? outputTemplate
+                    : SumoLogicSink.DefaultOutputTemplate;
+
+                textFormatter = new MessageTemplateTextFormatter(templateToUse, null);
+            }
 
             var sink = new SumoLogicSink(
                 endpointUrl,

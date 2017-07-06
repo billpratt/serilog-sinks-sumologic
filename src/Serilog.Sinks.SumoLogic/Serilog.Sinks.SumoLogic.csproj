@@ -15,10 +15,8 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>2.1.0</Version>
-    <PackageReleaseNotes>You can now easily override the ITextFormatter.
-
-- Removed IFormatProvider from constructor and replaced it with ITextFormatter</PackageReleaseNotes>
+    <Version>2.2.0</Version>
+    <PackageReleaseNotes>Added ability to specify outputTemplate via appsettings.json</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/billpratt/serilog-sinks-sumologic</RepositoryUrl>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>

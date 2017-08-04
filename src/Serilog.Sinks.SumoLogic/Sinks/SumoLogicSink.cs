@@ -91,7 +91,12 @@ namespace Serilog.Sinks.SumoLogic.Sinks
 
         protected override void Dispose(bool disposing)
         {
-            _httpClient?.Dispose();
+            base.Dispose(disposing);
+
+            if (disposing)
+            {
+                _httpClient.Dispose();
+            }
         }
 
         protected string GetFormattedLog(LogEvent logEvent)

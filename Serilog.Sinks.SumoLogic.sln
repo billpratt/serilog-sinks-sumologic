@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BAA9AEEF-5E86-4038-AA53-DB2B5E7F0EC8}"
 EndProject
@@ -20,7 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9AEBB574-0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Sinks.SumoLogic.Tests", "test\Serilog.Sinks.SumoLogic.Tests\Serilog.Sinks.SumoLogic.Tests.csproj", "{507D3038-226C-412E-8FAE-4F5D18236841}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSettingsExample", "examples\AppSettingsExample\AppSettingsExample.csproj", "{EFC836D1-EF80-4C12-8487-B48523D241CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppSettingsExample", "examples\AppSettingsExample\AppSettingsExample.csproj", "{EFC836D1-EF80-4C12-8487-B48523D241CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

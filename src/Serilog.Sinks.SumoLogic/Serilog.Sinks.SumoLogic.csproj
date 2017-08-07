@@ -15,8 +15,8 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>2.2.0</Version>
-    <PackageReleaseNotes>Added ability to specify outputTemplate via appsettings.json</PackageReleaseNotes>
+    <Version>2.3.0</Version>
+    <PackageReleaseNotes>Fixed issue where buffered logs were not always sent when Log.CloseAndFlush is called</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/billpratt/serilog-sinks-sumologic</RepositoryUrl>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>

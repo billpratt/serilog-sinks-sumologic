@@ -39,10 +39,10 @@ namespace Serilog.Sinks.SumoLogic
             string outputTemplate = null,
             HttpMessageHandler handler = null)
         {
-            if (loggerConfiguration == null)
+            if(loggerConfiguration == null)
                 throw new ArgumentNullException(nameof(loggerConfiguration));
 
-            if (string.IsNullOrWhiteSpace(endpointUrl))
+            if(string.IsNullOrWhiteSpace(endpointUrl))
                 throw new ArgumentNullException(nameof(endpointUrl));
             
             period = period ?? SumoLogicSink.DefaultPeriod;

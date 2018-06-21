@@ -25,7 +25,7 @@ namespace Serilog.Sinks.SumoLogic
         /// <param name="period">The time to wait between checking for event batches.</param>
         /// <param name="textFormatter">Supplies how logs should be formatted, or null to use the default</param>
         /// <param name="outputTemplate">Override default output template. Should not be used if overriding <see cref="ITextFormatter"/></param>
-        /// <param name="handler">Override default http handler <see cref="ITextFormatter"/></param>
+        /// <param name="handler">Override default http handler <see cref="HttpMessageHandler"/></param>
         /// <returns></returns>
         public static LoggerConfiguration SumoLogic(
             this LoggerSinkConfiguration loggerConfiguration,

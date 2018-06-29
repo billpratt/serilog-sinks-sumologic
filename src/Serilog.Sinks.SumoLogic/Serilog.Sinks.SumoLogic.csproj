@@ -3,6 +3,7 @@
   <PropertyGroup>
     <Description>Serilog sink for Sumo Logic</Description>
     <VersionPrefix>2.0.3</VersionPrefix>
+    <VersionPrefix>2.4.0</VersionPrefix>
     <Authors>Bill Pratt</Authors>
     <TargetFrameworks>net45;netstandard1.5</TargetFrameworks>
     <AssemblyName>Serilog.Sinks.SumoLogic</AssemblyName>
@@ -15,8 +16,8 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>2.3.0</Version>
-    <PackageReleaseNotes>Fixed issue where buffered logs were not always sent when Log.CloseAndFlush is called</PackageReleaseNotes>
+    <Version>2.4.0</Version>
+    <PackageReleaseNotes>Pass-through http handler during configuration</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/billpratt/serilog-sinks-sumologic</RepositoryUrl>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>

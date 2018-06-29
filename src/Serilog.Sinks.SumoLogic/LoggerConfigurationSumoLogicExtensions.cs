@@ -4,6 +4,7 @@ using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Formatting.Display;
 using Serilog.Sinks.SumoLogic.Sinks;
+using System.Net.Http;
 
 namespace Serilog.Sinks.SumoLogic
 {
@@ -24,6 +25,7 @@ namespace Serilog.Sinks.SumoLogic
         /// <param name="period">The time to wait between checking for event batches.</param>
         /// <param name="textFormatter">Supplies how logs should be formatted, or null to use the default</param>
         /// <param name="outputTemplate">Override default output template. Should not be used if overriding <see cref="ITextFormatter"/></param>
+        /// <param name="handler">Override default http handler <see cref="HttpMessageHandler"/></param>
         /// <returns></returns>
         public static LoggerConfiguration SumoLogic(
             this LoggerSinkConfiguration loggerConfiguration,
@@ -34,7 +36,8 @@ namespace Serilog.Sinks.SumoLogic
             int batchSizeLimit = SumoLogicSink.DefaultBatchSizeLimit,
             TimeSpan? period = null,
             ITextFormatter textFormatter = null,
-            string outputTemplate = null)
+            string outputTemplate = null,
+            HttpMessageHandler handler = null)
         {
             if(loggerConfiguration == null)
                 throw new ArgumentNullException(nameof(loggerConfiguration));
@@ -64,7 +67,8 @@ namespace Serilog.Sinks.SumoLogic
                 sourceCategory,
                 textFormatter,
                 batchSizeLimit,
-                period.Value);
+                period.Value,
+                handler);
 
             return loggerConfiguration.Sink(sink, restrictedToMinimumLevel);
         }

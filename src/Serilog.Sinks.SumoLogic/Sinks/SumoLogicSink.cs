@@ -71,14 +71,14 @@ namespace Serilog.Sinks.SumoLogic.Sinks
             string sourceCategory,
             ITextFormatter textFormatter,
             int batchSizeLimit,
-            TimeSpan period) : base(batchSizeLimit, period)
+            TimeSpan period,
+            HttpMessageHandler handler = null) : base(batchSizeLimit, period)
         {
             _endpointUrl = endpointUrl;
             _sourceName = sourceName;
             _sourceCategory = sourceCategory;
             _textFormatter = textFormatter;
-
-            _httpClient = new HttpClient();
+            _httpClient = handler == null ? new HttpClient() : new HttpClient(handler);
         }
 
         protected override async Task EmitBatchAsync(IEnumerable<LogEvent> events)

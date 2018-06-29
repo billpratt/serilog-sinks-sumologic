@@ -1,5 +1,11 @@
 # Serilog.Sinks.SumoLogic
 
+[![NuGet][main-nuget-badge]][main-nuget] [![NuGet][nuget-dl-badge]][main-nuget]
+
+[main-nuget]: https://www.nuget.org/packages/Serilog.Sinks.SumoLogic/
+[main-nuget-badge]: https://img.shields.io/nuget/v/Serilog.Sinks.SumoLogic.svg?style=flat-square&label=nuget
+[nuget-dl-badge]: https://img.shields.io/nuget/dt/Serilog.Sinks.SumoLogic.svg?style=flat-square
+
 A [Serilog](https://github.com/serilog/serilog) sink that writes events to [Sumo Logic](http://www.sumologic.com).
 
 **Package** - [Serilog.Sinks.SumoLogic](http://nuget.org/packages/serilog.sinks.sumologic)

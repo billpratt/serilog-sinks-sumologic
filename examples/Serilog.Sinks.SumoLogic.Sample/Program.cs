@@ -2,7 +2,7 @@
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting;
-using Serilog.Formatting.Raw;
+using Serilog.Formatting.Compact;
 
 namespace Serilog.Sinks.SumoLogic.Sample
 {
@@ -39,7 +39,7 @@ namespace Serilog.Sinks.SumoLogic.Sample
         {
             return new LoggerConfiguration()
                 .WriteTo.Console()
-                .WriteTo.Async(configuration => 
+                .WriteTo.Async(configuration =>
                                 configuration.SumoLogic(url, "CustomSourceName"))   // use in console apps
                 .WriteTo.SumoLogic(url, "CustomSourceName")       // use in ASP.NET
                 .CreateLogger();
@@ -57,7 +57,7 @@ namespace Serilog.Sinks.SumoLogic.Sample
 
         private static Logger CustomTextFormatter(string url)
         {
-            ITextFormatter textFormatter = new RawFormatter();
+            ITextFormatter textFormatter = new CompactJsonFormatter();
 
             return new LoggerConfiguration()
                 .WriteTo.Console()
@@ -69,19 +69,19 @@ namespace Serilog.Sinks.SumoLogic.Sample
 
         private static Logger OverrideEverything(string url)
         {
-            ITextFormatter textFormatter = new RawFormatter();
+            ITextFormatter textFormatter = new CompactJsonFormatter();
 
             return new LoggerConfiguration()
                 .WriteTo.Console()
                 .WriteTo.Async(configuration =>
                                 configuration.SumoLogic(
-                                    url, 
+                                    url,
                                     sourceName: "CustomSourceName",
                                     sourceCategory: "CustomSourceCategory",
                                     restrictedToMinimumLevel: LogEventLevel.Debug,
                                     batchSizeLimit: 20,
                                     period: TimeSpan.FromSeconds(1),
-                                    textFormatter: new RawFormatter()))     // use in console apps
+                                    textFormatter: new CompactJsonFormatter()))     // use in console apps
                 .WriteTo.SumoLogic(
                                     url,
                                     sourceName: "CustomSourceName",
@@ -89,7 +89,7 @@ namespace Serilog.Sinks.SumoLogic.Sample
                                     restrictedToMinimumLevel: LogEventLevel.Debug,
                                     batchSizeLimit: 20,
                                     period: TimeSpan.FromSeconds(1),
-                                    textFormatter: new RawFormatter())       // use in ASP.NET
+                                    textFormatter: new CompactJsonFormatter())       // use in ASP.NET
                 .CreateLogger();
         }
     }
